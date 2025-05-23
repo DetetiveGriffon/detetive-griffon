@@ -1,1 +1,134 @@
-# detetive-griffon
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Livro-jogo do Detetive Griffon</title>
+  <style>
+    body {
+      background-color: #fdf6e3; /* bege claro */
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    .container {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    .flags {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 24px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    select, input[type="text"], button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .flag-button {
+      cursor: pointer;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="flags">
+      <span><strong>Selecione o idioma:</strong></span>
+      <span class="flag-button" onclick="setLang('pt')">🇧🇷</span>
+      <span class="flag-button" onclick="setLang('en')">🇬🇧</span>
+    </div>
+
+    <h1 id="tituloPrincipal">Selecione um idioma</h1>
+
+    <div id="jogo" style="display: none;">
+      <h2 id="tituloDropdown"></h2>
+      <select id="menu">
+        <option value="misterio1">Um Mistério em Londres</option>
+      </select>
+
+      <div id="perguntas" style="margin-top: 20px;">
+        <label id="pergunta1Label"></label>
+        <input type="text" id="resposta1">
+
+        <label id="pergunta2Label"></label>
+        <input type="text" id="resposta2">
+
+        <button onclick="verificar()">Enviar</button>
+      </div>
+
+      <div id="resultado"></div>
+    </div>
+  </div>
+
+  <script>
+    let lang = "pt";
+
+    const textos = {
+      pt: {
+        titulo: "Livro-jogo de colorir do Detetive Griffon",
+        dropdown: "Um Mistério em Londres",
+        pergunta1: "Qual o objeto perdido?",
+        pergunta2: "Em qual local ele estava?",
+        correta1: "lanterna",
+        correta2: "a lanchonete da monique",
+        acerto: "✅ Respostas corretas!",
+        erro: "❌ Uma ou ambas as respostas estão incorretas. Tente novamente."
+      },
+      en: {
+        titulo: "Detective Griffon’s Coloring Gamebook",
+        dropdown: "A Mystery in London",
+        pergunta1: "What was the missing object?",
+        pergunta2: "Where was it found?",
+        correta1: "flashlight",
+        correta2: "monique’s diner",
+        acerto: "✅ Correct answers!",
+        erro: "❌ One or both answers are incorrect. Try again."
+      }
+    };
+
+    function setLang(novaLang) {
+      lang = novaLang;
+      const t = textos[lang];
+      document.getElementById("tituloPrincipal").textContent = t.titulo;
+      document.getElementById("tituloDropdown").textContent = t.dropdown;
+      document.getElementById("pergunta1Label").textContent = t.pergunta1;
+      document.getElementById("pergunta2Label").textContent = t.pergunta2;
+      document.getElementById("jogo").style.display = "block";
+    }
+
+    function verificar() {
+      const r1 = document.getElementById("resposta1").value.trim().toLowerCase();
+      const r2 = document.getElementById("resposta2").value.trim().toLowerCase();
+      const correta1 = textos[lang].correta1.toLowerCase();
+      const correta2 = textos[lang].correta2.toLowerCase();
+      const resultado = document.getElementById("resultado");
+
+      if (r1 === correta1 && r2 === correta2) {
+        resultado.textContent = textos[lang].acerto;
+        resultado.style.color = "green";
+      } else {
+        resultado.textContent = textos[lang].erro;
+        resultado.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
