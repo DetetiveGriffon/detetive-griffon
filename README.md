@@ -87,7 +87,7 @@
         pergunta1: "Qual o objeto perdido?",
         pergunta2: "Em qual local ele estava?",
         correta1: "lanterna",
-        correta2: "a lanchonete da monique",
+        correta2: "lanchonete da monique",
         acerto: "✅ Respostas corretas!",
         erro: "❌ Uma ou ambas as respostas estão incorretas. Tente novamente."
       },
