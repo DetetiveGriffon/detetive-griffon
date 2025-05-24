@@ -21,9 +21,14 @@
       display: flex;
       align-items: center;
       gap: 15px;
-      font-size: 24px;
+      font-size: 18px;
       justify-content: center;
       margin-bottom: 20px;
+    }
+    .flags img {
+      width: 40px;
+      height: auto;
+      cursor: pointer;
     }
     select, input[type="text"], button {
       padding: 10px;
@@ -35,9 +40,6 @@
     #resultado {
       margin-top: 20px;
       font-weight: bold;
-    }
-    .flag-button {
-      cursor: pointer;
     }
     label {
       display: block;
@@ -51,8 +53,8 @@
   <div class="container">
     <div class="flags">
       <span><strong>Selecione o idioma:</strong></span>
-      <span class="flag-button" onclick="setLang('pt')">🇧🇷</span>
-      <span class="flag-button" onclick="setLang('en')">🇬🇧</span>
+      <img src="https://flagcdn.com/w40/br.png" alt="Português" onclick="setLang('pt')">
+      <img src="https://flagcdn.com/w40/gb.png" alt="English" onclick="setLang('en')">
     </div>
 
     <h1 id="tituloPrincipal">Selecione um idioma</h1>
