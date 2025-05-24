@@ -62,7 +62,7 @@
     <div id="jogo" style="display: none;">
       <h2 id="tituloDropdown"></h2>
       <select id="menu">
-        <option value="misterio1">Um Mistério em Londres</option>
+        <option id="opcaoMisterio" value="misterio1">Um Mistério em Londres</option>
       </select>
 
       <div id="perguntas" style="margin-top: 20px;">
@@ -89,7 +89,7 @@
         pergunta1: "Qual o objeto perdido?",
         pergunta2: "Em qual local ele estava?",
         correta1: ["lanterna"],
-        correta2: ["lanchonete da monique", "lanchonete"],
+        correta2: ["a lanchonete da monique", "lanchonete"],
         acerto: "✅ Respostas corretas!",
         erro: "❌ Uma ou ambas as respostas estão incorretas. Tente novamente."
       },
@@ -108,8 +108,10 @@
     function setLang(novaLang) {
       lang = novaLang;
       const t = textos[lang];
+
       document.getElementById("tituloPrincipal").textContent = t.titulo;
       document.getElementById("tituloDropdown").textContent = t.dropdown;
+      document.getElementById("opcaoMisterio").textContent = t.dropdown;
       document.getElementById("pergunta1Label").textContent = t.pergunta1;
       document.getElementById("pergunta2Label").textContent = t.pergunta2;
       document.getElementById("jogo").style.display = "block";
