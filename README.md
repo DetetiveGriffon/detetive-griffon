@@ -86,7 +86,7 @@
         titulo: "Livro-jogo de colorir do Detetive Griffon",
         dropdownOption: "Um Mistério em Londres",
         pergunta1: "Qual o objeto perdido?",
-        pergunta2: "Em qual local ele estava?",
+        pergunta2: "Onde foi encontrado?",
         correta1: ["lanterna"],
         correta2: ["a lanchonete da monique", "lanchonete"],
         acerto: "✅ Respostas corretas!",
