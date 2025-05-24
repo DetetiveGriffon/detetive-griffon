@@ -60,9 +60,8 @@
     <h1 id="tituloPrincipal">Selecione um idioma</h1>
 
     <div id="jogo" style="display: none;">
-      <h2 id="tituloDropdown"></h2>
       <select id="menu">
-        <option value="misterio1">Um Mistério em Londres</option>
+        <option id="opcaoMisterio" value="misterio1">Um Mistério em Londres</option>
       </select>
 
       <div id="perguntas" style="margin-top: 20px;">
@@ -85,7 +84,7 @@
     const textos = {
       pt: {
         titulo: "Livro-jogo de colorir do Detetive Griffon",
-        dropdown: "Um Mistério em Londres",
+        dropdownOption: "Um Mistério em Londres",
         pergunta1: "Qual o objeto perdido?",
         pergunta2: "Em qual local ele estava?",
         correta1: ["lanterna"],
@@ -95,7 +94,7 @@
       },
       en: {
         titulo: "Detective Griffon’s Coloring Gamebook",
-        dropdown: "A Mystery in London",
+        dropdownOption: "A Mystery in London",
         pergunta1: "What was the missing object?",
         pergunta2: "Where was it found?",
         correta1: ["flashlight"],
@@ -108,8 +107,9 @@
     function setLang(novaLang) {
       lang = novaLang;
       const t = textos[lang];
+
       document.getElementById("tituloPrincipal").textContent = t.titulo;
-      document.getElementById("tituloDropdown").textContent = t.dropdown;
+      document.getElementById("opcaoMisterio").textContent = t.dropdownOption;
       document.getElementById("pergunta1Label").textContent = t.pergunta1;
       document.getElementById("pergunta2Label").textContent = t.pergunta2;
       document.getElementById("jogo").style.display = "block";
