@@ -5,7 +5,7 @@
   <title>Livro-jogo do Detetive Griffon</title>
   <style>
     body {
-      background-color: #fdf6e3; /* bege claro */
+      background-color: #fdf6e3;
       font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
@@ -86,8 +86,8 @@
         dropdown: "Um Mistério em Londres",
         pergunta1: "Qual o objeto perdido?",
         pergunta2: "Em qual local ele estava?",
-        correta1: "lanterna",
-        correta2: "lanchonete da monique",
+        correta1: ["lanterna"],
+        correta2: ["a lanchonete da monique", "lanchonete"],
         acerto: "✅ Respostas corretas!",
         erro: "❌ Uma ou ambas as respostas estão incorretas. Tente novamente."
       },
@@ -96,8 +96,8 @@
         dropdown: "A Mystery in London",
         pergunta1: "What was the missing object?",
         pergunta2: "Where was it found?",
-        correta1: "flashlight",
-        correta2: "monique’s diner",
+        correta1: ["flashlight"],
+        correta2: ["monique’s diner", "diner"],
         acerto: "✅ Correct answers!",
         erro: "❌ One or both answers are incorrect. Try again."
       }
@@ -116,15 +116,21 @@
     function verificar() {
       const r1 = document.getElementById("resposta1").value.trim().toLowerCase();
       const r2 = document.getElementById("resposta2").value.trim().toLowerCase();
-      const correta1 = textos[lang].correta1.toLowerCase();
-      const correta2 = textos[lang].correta2.toLowerCase();
+      const t = textos[lang];
+
+      const correta1 = t.correta1;
+      const correta2 = t.correta2;
+
       const resultado = document.getElementById("resultado");
 
-      if (r1 === correta1 && r2 === correta2) {
-        resultado.textContent = textos[lang].acerto;
+      const r1ok = correta1.includes(r1);
+      const r2ok = correta2.includes(r2);
+
+      if (r1ok && r2ok) {
+        resultado.textContent = t.acerto;
         resultado.style.color = "green";
       } else {
-        resultado.textContent = textos[lang].erro;
+        resultado.textContent = t.erro;
         resultado.style.color = "red";
       }
     }
