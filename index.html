@@ -50,6 +50,7 @@
       margin-top: 40px;
       padding-top: 20px;
       border-top: 1px solid #ccc;
+      display: none;
     }
     #botaoMais {
       margin-top: 10px;
@@ -134,14 +135,16 @@
     function setLang(novaLang) {
       lang = novaLang;
       const t = textos[lang];
+
       document.getElementById("tituloPrincipal").textContent = t.titulo;
       document.getElementById("opcaoMisterio").textContent = t.dropdownOption;
       document.getElementById("pergunta1Label").textContent = t.pergunta1;
       document.getElementById("pergunta2Label").textContent = t.pergunta2;
       document.getElementById("perguntaRodape").textContent = t.rodapePergunta;
       document.getElementById("botaoMais").textContent = t.rodapeBotao;
-      atualizarContador();
       document.getElementById("jogo").style.display = "block";
+      document.getElementById("rodape").style.display = "block";
+      atualizarContador();
     }
 
     function verificar() {
@@ -186,7 +189,7 @@
     }
 
     window.onload = () => {
-      atualizarContador();
+      // não mostrar contador antes do idioma
     };
   </script>
 
