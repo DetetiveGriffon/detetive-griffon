@@ -6,7 +6,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Winky+Sans&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #fdf6e3;
+      background-image: url('fundo.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       font-family: 'Winky Sans', sans-serif;
       display: flex;
       flex-direction: column;
@@ -64,10 +68,19 @@
       font-weight: bold;
       font-size: 14px;
     }
+    #mascoteDireito {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 150px;
+      max-width: 25%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body>
-
   <div class="container">
     <div class="flags">
       <span><strong>Selecione o idioma:</strong></span>
@@ -101,6 +114,8 @@
       <div id="contador">0 votos</div>
     </div>
   </div>
+
+  <img src="mascote.png" id="mascoteDireito" alt="Mascote do Detetive Griffon">
 
   <script>
     let lang = "pt";
@@ -190,11 +205,6 @@
       const total = localStorage.getItem("contadorEdicoes") || "0";
       document.getElementById("contador").textContent = `${total} ${t.rodapeVotos}`;
     }
-
-    window.onload = () => {
-      // aguardando seleção de idioma
-    };
   </script>
-
 </body>
 </html>
