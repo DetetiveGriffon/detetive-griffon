@@ -72,8 +72,8 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 150px;
-      max-width: 25%;
+      width: 195px;
+      max-width: 32.5%;
       z-index: 0;
       pointer-events: none;
       opacity: 0.9;
