@@ -46,6 +46,21 @@
       margin-top: 15px;
       font-weight: bold;
     }
+    #rodape {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+    }
+    #botaoMais {
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #contador {
+      margin-top: 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -76,6 +91,12 @@
 
       <div id="resultado"></div>
     </div>
+
+    <div id="rodape">
+      <p id="perguntaRodape">Você gostaria de mais edições?</p>
+      <button id="botaoMais" onclick="contarClique()">Quero!</button>
+      <div id="contador">0 votos</div>
+    </div>
   </div>
 
   <script>
@@ -86,11 +107,14 @@
         titulo: "Livro-jogo de colorir do Detetive Griffon",
         dropdownOption: "Um Mistério em Londres",
         pergunta1: "Qual o objeto perdido?",
-        pergunta2: "Onde foi encontrado?",
+        pergunta2: "Em qual local ele estava?",
         correta1: ["lanterna"],
         correta2: ["a lanchonete da monique", "lanchonete"],
         acerto: "✅ Respostas corretas!",
-        erro: "❌ Uma ou ambas as respostas estão incorretas. Tente novamente."
+        erro: "❌ Uma ou ambas as respostas estão incorretas. Tente novamente.",
+        rodapePergunta: "Você gostaria de mais edições?",
+        rodapeBotao: "Quero!",
+        rodapeVotos: "votos"
       },
       en: {
         titulo: "Detective Griffon’s Coloring Gamebook",
@@ -100,18 +124,23 @@
         correta1: ["flashlight"],
         correta2: ["monique’s diner", "diner"],
         acerto: "✅ Correct answers!",
-        erro: "❌ One or both answers are incorrect. Try again."
+        erro: "❌ One or both answers are incorrect. Try again.",
+        rodapePergunta: "Would you like more editions?",
+        rodapeBotao: "I do!",
+        rodapeVotos: "votes"
       }
     };
 
     function setLang(novaLang) {
       lang = novaLang;
       const t = textos[lang];
-
       document.getElementById("tituloPrincipal").textContent = t.titulo;
       document.getElementById("opcaoMisterio").textContent = t.dropdownOption;
       document.getElementById("pergunta1Label").textContent = t.pergunta1;
       document.getElementById("pergunta2Label").textContent = t.pergunta2;
+      document.getElementById("perguntaRodape").textContent = t.rodapePergunta;
+      document.getElementById("botaoMais").textContent = t.rodapeBotao;
+      atualizarContador();
       document.getElementById("jogo").style.display = "block";
     }
 
@@ -136,6 +165,29 @@
         resultado.style.color = "red";
       }
     }
+
+    // --- CONTADOR ---
+
+    let clicado = false;
+
+    function contarClique() {
+      if (clicado) return;
+      clicado = true;
+
+      const total = Number(localStorage.getItem("contadorEdicoes") || "0") + 1;
+      localStorage.setItem("contadorEdicoes", total);
+      atualizarContador();
+    }
+
+    function atualizarContador() {
+      const t = textos[lang];
+      const total = localStorage.getItem("contadorEdicoes") || "0";
+      document.getElementById("contador").textContent = `${total} ${t.rodapeVotos}`;
+    }
+
+    window.onload = () => {
+      atualizarContador();
+    };
   </script>
 
 </body>
