@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Livro-jogo do Detetive Griffon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Winky+Sans&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #fdf6e3;
-      font-family: Arial, sans-serif;
+      font-family: 'Winky Sans', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -36,6 +37,7 @@
       width: 100%;
       box-sizing: border-box;
       font-size: 16px;
+      font-family: inherit;
     }
     #resultado {
       margin-top: 20px;
@@ -87,7 +89,7 @@
         <label id="pergunta2Label"></label>
         <input type="text" id="resposta2">
 
-        <button onclick="verificar()">Enviar</button>
+        <button id="botaoVerificar" onclick="verificar()">Enviar</button>
       </div>
 
       <div id="resultado"></div>
@@ -109,6 +111,7 @@
         dropdownOption: "Um Mistério em Londres",
         pergunta1: "Qual o objeto perdido?",
         pergunta2: "Em qual local ele estava?",
+        botaoVerificar: "Descubra se desvendou o mistério!",
         correta1: ["lanterna"],
         correta2: ["a lanchonete da monique", "lanchonete"],
         acerto: "✅ Respostas corretas!",
@@ -122,6 +125,7 @@
         dropdownOption: "A Mystery in London",
         pergunta1: "What was the missing object?",
         pergunta2: "Where was it found?",
+        botaoVerificar: "Find out if you solved the mystery!",
         correta1: ["flashlight"],
         correta2: ["monique’s diner", "diner"],
         acerto: "✅ Correct answers!",
@@ -140,6 +144,7 @@
       document.getElementById("opcaoMisterio").textContent = t.dropdownOption;
       document.getElementById("pergunta1Label").textContent = t.pergunta1;
       document.getElementById("pergunta2Label").textContent = t.pergunta2;
+      document.getElementById("botaoVerificar").textContent = t.botaoVerificar;
       document.getElementById("perguntaRodape").textContent = t.rodapePergunta;
       document.getElementById("botaoMais").textContent = t.rodapeBotao;
       document.getElementById("jogo").style.display = "block";
@@ -169,8 +174,6 @@
       }
     }
 
-    // --- CONTADOR ---
-
     let clicado = false;
 
     function contarClique() {
@@ -189,7 +192,7 @@
     }
 
     window.onload = () => {
-      // não mostrar contador antes do idioma
+      // aguardando seleção de idioma
     };
   </script>
 
