@@ -134,7 +134,7 @@
         rodapeVotos: "votos",
         edicoes: {
           misterio1: {
-            correta1: ["lanterna"],
+            correta1: ["a lanterna", "uma lanterna", "lanterna"],
             correta2: ["a lanchonete da monique", "lanchonete"]
           },
           misterio2: {
