@@ -138,11 +138,11 @@
             correta2: ["a lanchonete da monique", "lanchonete"]
           },
           misterio2: {
-            correta1: ["a máquina de escrever", "máquina de escrever", "uma máquina de escrever"],
+            correta1: ["a maquina de escrever", "maquina de escrever", "uma maquina de escrever"],
             correta2: ["no quarto da lilou", "quarto da lilou"]
           },
           misterio3: {
-            correta1: ["a balança", "balança", "uma balança"],
+            correta1: ["a balanca", "balanca", "uma balanca"],
             correta2: ["na sala de costura da camille", "sala de costura da camile"]
           }
         },
@@ -177,6 +177,10 @@
       }
     };
 
+    function removerAcentos(str) {
+      return str.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+    }
+
     function setLang(novaLang) {
       lang = novaLang;
       const t = textos[lang];
@@ -194,13 +198,13 @@
     }
 
     function verificar() {
-      const r1 = document.getElementById("resposta1").value.trim().toLowerCase();
-      const r2 = document.getElementById("resposta2").value.trim().toLowerCase();
+      const r1 = removerAcentos(document.getElementById("resposta1").value.trim().toLowerCase());
+      const r2 = removerAcentos(document.getElementById("resposta2").value.trim().toLowerCase());
       const t = textos[lang];
       const edicaoSelecionada = document.getElementById("menu").value;
 
-      const correta1 = t.edicoes[edicaoSelecionada].correta1;
-      const correta2 = t.edicoes[edicaoSelecionada].correta2;
+      const correta1 = t.edicoes[edicaoSelecionada].correta1.map(removerAcentos);
+      const correta2 = t.edicoes[edicaoSelecionada].correta2.map(removerAcentos);
 
       const resultado = document.getElementById("resultado");
 
